@@ -1,0 +1,38 @@
+@layer tokens, base, layout, components, sections, motion;
+
+@layer tokens {
+  :root {
+    color-scheme: light;
+
+    /* Color — REPLACE with values sampled from the real logo */
+    --paper: #FBF7EF;  --paper-2: #F3ECDD;
+    --ink: #12231A;    --ink-2: #445248;
+    --leaf-900: #0F3D2A; --leaf-700: #1E6B45;
+    --mango-500: #F29A1F; --sky-700: #1F4E8C;
+    --line: rgb(18 35 26 / .12);
+    --focus: var(--sky-700);
+
+    /* Type */
+    --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+    --font-ui: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --fs-hero: clamp(2rem, 1.2rem + 3.6vw, 3.25rem);
+    --fs-h2:   clamp(1.5rem, 1.1rem + 1.6vw, 2.25rem);
+    --fs-body: 1rem;
+    --fs-small: .8125rem;
+
+    /* Space (4-pt) */
+    --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px;
+    --s-5: 24px; --s-6: 32px; --s-7: 48px; --s-8: 72px;
+
+    /* Shape + elevation */
+    --r-sm: 10px; --r-md: 18px; --r-pill: 999px;
+    --sh-1: 0 1px 2px rgb(18 35 26 / .06), 0 2px 8px rgb(18 35 26 / .05);
+    --sh-2: 0 4px 14px rgb(18 35 26 / .10);
+    --sh-3: 0 18px 48px rgb(18 35 26 / .22);
+
+    /* Motion */
+    --ease-out: cubic-bezier(.22, 1, .36, 1);
+    --ease-in-out: cubic-bezier(.65, 0, .35, 1);
+    --dur-1: 120ms; --dur-2: 220ms; --dur-3: 400ms; --dur-4: 700ms;
+  }
+}

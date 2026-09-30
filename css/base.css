@@ -1,0 +1,11 @@
+@layer base {
+  html { -webkit-text-size-adjust: 100%; scroll-padding-top: 1rem; }
+  body { margin: 0; background: var(--paper); color: var(--ink);
+         font: 400 var(--fs-body)/1.6 var(--font-ui);
+         -webkit-tap-highlight-color: transparent; }
+  a, button { touch-action: manipulation; }
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .hero { min-height: 100svh; }
+  img { max-width: 100%; height: auto; }
+  body:has(dialog[open]) { overflow: hidden; }
+}
