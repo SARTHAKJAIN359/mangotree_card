@@ -1,0 +1,348 @@
+@layer components {
+  /* Base Button Styling */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--s-2);
+    min-height: 46px;
+    padding: var(--s-2) var(--s-3);
+    border-radius: var(--r-md);
+    font-family: var(--font-ui);
+    font-size: var(--fs-small);
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    user-select: none;
+    transition: background-color var(--dur-1) var(--ease-out),
+                border-color var(--dur-1) var(--ease-out),
+                transform var(--dur-1) var(--ease-out),
+                box-shadow var(--dur-1) var(--ease-out);
+  }
+
+  .btn:active {
+    transform: scale(0.98);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn {
+      transition: none;
+    }
+    .btn:active {
+      transform: none;
+    }
+  }
+
+  /* Primary WhatsApp CTA — Visually dominant element */
+  .btn-whatsapp {
+    width: 100%;
+    min-height: 50px;
+    background-color: var(--mango-500);
+    color: var(--ink);
+    border: 1px solid rgba(18, 35, 26, 0.08);
+    border-radius: var(--r-pill);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    box-shadow: var(--sh-1);
+    gap: var(--s-2);
+  }
+
+  .btn-whatsapp:hover {
+    background-color: var(--mango-600);
+    box-shadow: var(--sh-2);
+  }
+
+  /* Secondary Hero CTAs (Call, Save, Share) */
+  .btn-secondary {
+    background-color: var(--paper-card);
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    box-shadow: var(--sh-1);
+    flex-direction: column;
+    gap: 4px;
+    padding: var(--s-2) 4px;
+    min-height: 48px;
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--paper-2);
+    border-color: rgba(18, 35, 26, 0.22);
+  }
+
+  .btn-secondary .btn-label {
+    font-size: var(--fs-caption);
+    font-weight: 600;
+  }
+
+  /* Icons */
+  .btn-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    flex-shrink: 0;
+  }
+
+  .btn-whatsapp .btn-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* Mobile Bottom Action Bar Buttons */
+  .bar-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    min-height: 46px;
+    padding: 4px;
+    border-radius: var(--r-sm);
+    color: var(--ink);
+    font-size: 0.725rem;
+    font-weight: 600;
+    transition: background-color var(--dur-1) var(--ease-out);
+  }
+
+  .bar-btn:hover,
+  .bar-btn:active {
+    background-color: rgba(18, 35, 26, 0.06);
+  }
+
+  .bar-btn-whatsapp {
+    background-color: var(--mango-500);
+    color: var(--ink);
+    border-radius: var(--r-pill);
+    padding: 6px 10px;
+    font-weight: 700;
+  }
+
+  .bar-btn-whatsapp:hover {
+    background-color: var(--mango-600);
+  }
+
+  .bar-btn .btn-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* -------------------------------------------------------------
+     DIALOG / MODAL SYSTEM
+     ------------------------------------------------------------- */
+  dialog {
+    border: none;
+    border-radius: var(--r-lg);
+    background-color: var(--paper);
+    color: var(--ink);
+    padding: 0;
+    max-width: min(92vw, 420px);
+    width: 100%;
+    box-shadow: var(--sh-3);
+    margin: auto;
+  }
+
+  dialog::backdrop {
+    background: rgba(15, 61, 42, 0.45);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  .dialog-sheet {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+  }
+
+  .dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--s-4) var(--s-5) var(--s-3);
+    border-bottom: 1px solid var(--line);
+    background-color: var(--paper-2);
+  }
+
+  .dialog-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .dialog-close-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--r-pill);
+    color: var(--ink-2);
+    background-color: transparent;
+    transition: background-color var(--dur-1) var(--ease-out);
+  }
+
+  .dialog-close-btn:hover {
+    background-color: rgba(18, 35, 26, 0.08);
+    color: var(--ink);
+  }
+
+  .dialog-body {
+    padding: var(--s-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+  }
+
+  /* Share Target Grid */
+  .share-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--s-3);
+  }
+
+  .share-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: var(--s-3) 4px;
+    background-color: var(--paper-card);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    color: var(--ink);
+    font-size: var(--fs-caption);
+    font-weight: 600;
+    text-align: center;
+    transition: transform var(--dur-1) var(--ease-out), background-color var(--dur-1) var(--ease-out);
+  }
+
+  .share-item:hover {
+    background-color: var(--paper-2);
+    transform: translateY(-2px);
+  }
+
+  .share-icon-wrap {
+    width: 38px;
+    height: 38px;
+    border-radius: var(--r-pill);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--paper-2);
+    color: var(--ink);
+  }
+
+  .share-item-whatsapp .share-icon-wrap { background-color: #25D366; color: #FFFFFF; }
+  .share-item-x .share-icon-wrap { background-color: #000000; color: #FFFFFF; }
+  .share-item-facebook .share-icon-wrap { background-color: #1877F2; color: #FFFFFF; }
+  .share-item-linkedin .share-icon-wrap { background-color: #0A66C2; color: #FFFFFF; }
+
+  /* Copy Link Input Bar */
+  .copy-link-box {
+    display: flex;
+    gap: var(--s-2);
+    background-color: var(--paper-card);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 4px 6px 4px var(--s-3);
+    align-items: center;
+  }
+
+  .copy-link-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: var(--ink-2);
+    font-family: var(--font-ui);
+    font-size: var(--fs-small);
+    outline: none;
+    text-overflow: ellipsis;
+  }
+
+  .btn-copy-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background-color: var(--leaf-900);
+    color: var(--paper);
+    border-radius: var(--r-sm);
+    font-size: var(--fs-caption);
+    font-weight: 600;
+    transition: background-color var(--dur-1) var(--ease-out);
+  }
+
+  .btn-copy-action:hover {
+    background-color: var(--leaf-700);
+  }
+
+  /* -------------------------------------------------------------
+     TOAST NOTIFICATION SYSTEM
+     ------------------------------------------------------------- */
+  .toast-region {
+    position: fixed;
+    bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+    width: max-content;
+    max-width: 90vw;
+  }
+
+  .toast-card {
+    pointer-events: auto;
+    background-color: var(--leaf-950);
+    color: var(--paper);
+    padding: var(--s-3) var(--s-4);
+    border-radius: var(--r-pill);
+    box-shadow: var(--sh-3);
+    border: 1px solid var(--line-canopy);
+    display: flex;
+    align-items: center;
+    gap: var(--s-3);
+    font-size: var(--fs-small);
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+    transition: opacity var(--dur-2) var(--ease-out), transform var(--dur-2) var(--ease-out);
+  }
+
+  .toast-card.toast-enter {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .toast-card.toast-exit {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+
+  .toast-success {
+    border-color: var(--leaf-700);
+  }
+
+  .toast-warning {
+    border-color: var(--mango-500);
+  }
+
+  .toast-close {
+    color: var(--paper-2);
+    font-size: 1.1rem;
+    line-height: 1;
+    padding: 0 4px;
+    opacity: 0.7;
+    cursor: pointer;
+  }
+
+  .toast-close:hover {
+    opacity: 1;
+  }
+}

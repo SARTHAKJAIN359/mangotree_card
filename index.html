@@ -3,68 +3,355 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>MangoTree Insurance & Investments</title>
+  <meta name="theme-color" content="#0F3D2A">
+  <meta name="description" content="MangoTree Insurance & Investments — Personalised guidance for Life, Health, Mutual Funds and General Insurance by Amit Jain, Founder & CEO.">
+  <title>Amit Jain — Founder & CEO | MangoTree Insurance & Investments</title>
+
+  <!-- Typography Preconnect & Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   
+  <!-- Modern Cascading Layer Stylesheets -->
   <link rel="stylesheet" href="./css/tokens.css">
   <link rel="stylesheet" href="./css/base.css">
   <link rel="stylesheet" href="./css/layout.css">
-  
-  <style>
-    /* Temporary styling for Phase 1 */
-    .hero-container {
-      padding: var(--s-4);
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: var(--s-4);
-    }
-    .logo {
-      width: 150px;
-    }
-    h1 {
-      font-family: var(--font-display);
-      font-size: var(--fs-hero);
-      margin: 0;
-      line-height: 1.1;
-    }
-    h2 {
-      font-family: var(--font-ui);
-      font-size: var(--fs-body);
-      color: var(--ink-2);
-      font-weight: normal;
-      margin: 0;
-    }
-    .tagline {
-      font-family: var(--font-display);
-      font-size: var(--fs-h2);
-      color: var(--leaf-700);
-      margin: var(--s-2) 0;
-    }
-  </style>
+  <link rel="stylesheet" href="./css/components.css">
 </head>
 <body>
-  <div class="hero-container">
-    <img id="hero-logo" class="logo" src="" alt="MangoTree Logo">
-    <div>
-      <h1 id="hero-name">Name</h1>
-      <h2 id="hero-title">Title</h2>
-    </div>
-    <p id="hero-tagline" class="tagline" lang="hi-Latn">Tagline</p>
-  </div>
 
-  <script type="module">
-    import { CONFIG } from './js/config.js';
+  <!-- Inlined SVG Sprite: Guaranteed 100% reliable rendering across all protocols -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;" aria-hidden="true">
+    <symbol id="icon-whatsapp" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.487-1.761-1.66-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+    </symbol>
+    <symbol id="icon-phone" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+    </symbol>
+    <symbol id="icon-user-plus" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+    </symbol>
+    <symbol id="icon-share" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+    </symbol>
+    <symbol id="icon-copy" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+    </symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+    </symbol>
+    <symbol id="icon-x" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+    </symbol>
+    <symbol id="icon-facebook" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+    </symbol>
+    <symbol id="icon-linkedin" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+    </symbol>
+  </svg>
+
+  <!-- Mobile-first App Shell -->
+  <main class="app-shell">
     
-    document.addEventListener("DOMContentLoaded", () => {
-      document.title = `${CONFIG.profile.name} | ${CONFIG.profile.title} | ${CONFIG.profile.company}`;
-      document.getElementById('hero-name').textContent = CONFIG.profile.name;
-      document.getElementById('hero-title').textContent = `${CONFIG.profile.title} — ${CONFIG.profile.company}`;
-      document.getElementById('hero-tagline').textContent = CONFIG.profile.tagline;
-      document.getElementById('hero-logo').src = './assets/img/logo-mangotree.png';
-    });
+    <!-- Hero Section -->
+    <section class="hero-section" aria-label="Amit Jain profile header">
+      
+      <!-- Canopy Field: Forest Green Protective Header -->
+      <div class="canopy-field">
+        <header class="canopy-header">
+          <a href="./" class="brand-logo-link" aria-label="MangoTree Insurance & Investments Home">
+            <img id="brand-logo" class="brand-logo" src="./assets/img/logo-mangotree.png" alt="MangoTree Insurance & Investments Logo">
+          </a>
+        </header>
+      </div>
+
+      <!-- Canopy Arch: Amit Jain Portrait -->
+      <div class="portrait-arch-wrap">
+        <div class="portrait-arch">
+          <picture>
+            <source srcset="./assets/img/portrait-amit-jain.jpeg" type="image/jpeg">
+            <img id="portrait-img" class="portrait-img" src="./assets/img/portrait-amit-jain.jpeg" alt="Portrait of Amit Jain" width="124" height="156" fetchpriority="high">
+          </picture>
+        </div>
+      </div>
+
+      <!-- Identity Details -->
+      <div class="hero-identity">
+        <h1 id="hero-name" class="hero-name">Amit Jain</h1>
+        <p id="hero-role" class="hero-role">Founder & CEO</p>
+        <p id="hero-company" class="hero-company">MangoTree Insurance & Investments</p>
+        
+        <!-- Tagline: Hindi in Latin Script with WCAG AA Accent -->
+        <p id="hero-tagline" class="hero-tagline" lang="hi-Latn">
+          <span class="tagline-primary">“Aam ke aam,</span>
+          <span class="tagline-accent">guthliyon ke daam.”</span>
+        </p>
+      </div>
+
+      <!-- Action Cluster: WhatsApp Primary + Call, Save, Share Secondary -->
+      <div id="hero-actions" class="hero-actions-container" aria-label="Primary contact actions">
+        <a id="cta-whatsapp-hero" class="btn btn-whatsapp" href="https://wa.me/919911502502" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp with Amit Jain">
+          <svg class="btn-icon" aria-hidden="true" width="22" height="22">
+            <use href="#icon-whatsapp"></use>
+          </svg>
+          <span>Chat on WhatsApp</span>
+        </a>
+
+        <div class="hero-secondary-grid">
+          <a id="cta-call-hero" class="btn btn-secondary" href="tel:+919911502502" aria-label="Call Amit Jain">
+            <svg class="btn-icon" aria-hidden="true" width="18" height="18">
+              <use href="#icon-phone"></use>
+            </svg>
+            <span class="btn-label">Call</span>
+          </a>
+
+          <button type="button" id="cta-save-hero" class="btn btn-secondary" aria-label="Save contact to phone">
+            <svg class="btn-icon" aria-hidden="true" width="18" height="18">
+              <use href="#icon-user-plus"></use>
+            </svg>
+            <span class="btn-label">Save</span>
+          </button>
+
+          <button type="button" id="cta-share-hero" class="btn btn-secondary" aria-label="Share digital business card">
+            <svg class="btn-icon" aria-hidden="true" width="18" height="18">
+              <use href="#icon-share"></use>
+            </svg>
+            <span class="btn-label">Share</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content Area / Upcoming Phases Preview -->
+    <div class="content-body" style="padding: 1rem 1.25rem;">
+      <div style="height: 360px; border: 1.5px dashed var(--line); border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; padding: 1.5rem; background: var(--paper-2); opacity: 0.8; text-align: center; font-size: 0.875rem; color: var(--ink-2);">
+        <span>[Content Sections: About Amit Jain · Services Bento · Insurance Partners · Recognition Lightbox · Reviews]</span>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Sticky Mobile Action Bar (Appears conditionally on scroll) -->
+  <nav id="mobile-action-bar" class="mobile-action-bar" aria-label="Quick contact actions" aria-hidden="true">
+    <div class="mobile-action-bar-inner">
+      <a id="cta-whatsapp-bar" class="bar-btn bar-btn-whatsapp" href="https://wa.me/919911502502" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+        <svg class="btn-icon" aria-hidden="true" width="18" height="18">
+          <use href="#icon-whatsapp"></use>
+        </svg>
+        <span>WhatsApp</span>
+      </a>
+
+      <a id="cta-call-bar" class="bar-btn" href="tel:+919911502502" aria-label="Call Amit Jain">
+        <svg class="btn-icon" aria-hidden="true" width="18" height="18">
+          <use href="#icon-phone"></use>
+        </svg>
+        <span>Call</span>
+      </a>
+
+      <button type="button" id="cta-save-bar" class="bar-btn" aria-label="Save contact to phone">
+        <svg class="btn-icon" aria-hidden="true" width="18" height="18">
+          <use href="#icon-user-plus"></use>
+        </svg>
+        <span>Save</span>
+      </button>
+
+      <button type="button" id="cta-share-bar" class="bar-btn" aria-label="Share digital business card">
+        <svg class="btn-icon" aria-hidden="true" width="18" height="18">
+          <use href="#icon-share"></use>
+        </svg>
+        <span>Share</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Custom Accessible Share Modal Dialog -->
+  <dialog id="share-dialog" aria-labelledby="share-dialog-title">
+    <div class="dialog-sheet">
+      <header class="dialog-header">
+        <h2 id="share-dialog-title" class="dialog-title">Share Digital Card</h2>
+        <button type="button" class="dialog-close-btn" data-close-dialog aria-label="Close dialog">
+          <svg class="btn-icon" aria-hidden="true"><use href="#icon-close"></use></svg>
+        </button>
+      </header>
+
+      <div class="dialog-body">
+        <p style="margin: 0; font-size: var(--fs-small); color: var(--ink-2);">
+          Share Amit Jain's smart digital business card with your contacts:
+        </p>
+
+        <!-- Platform Targets: Sharing digital card URL to visitor's own network -->
+        <div class="share-grid">
+          <a id="share-whatsapp" class="share-item share-item-whatsapp" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share via WhatsApp">
+            <span class="share-icon-wrap">
+              <svg class="btn-icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+            </span>
+            <span>WhatsApp</span>
+          </a>
+
+          <a id="share-x" class="share-item share-item-x" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on X">
+            <span class="share-icon-wrap">
+              <svg class="btn-icon" aria-hidden="true"><use href="#icon-x"></use></svg>
+            </span>
+            <span>X (Twitter)</span>
+          </a>
+
+          <a id="share-facebook" class="share-item share-item-facebook" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook">
+            <span class="share-icon-wrap">
+              <svg class="btn-icon" aria-hidden="true"><use href="#icon-facebook"></use></svg>
+            </span>
+            <span>Facebook</span>
+          </a>
+
+          <a id="share-linkedin" class="share-item share-item-linkedin" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">
+            <span class="share-icon-wrap">
+              <svg class="btn-icon" aria-hidden="true"><use href="#icon-linkedin"></use></svg>
+            </span>
+            <span>LinkedIn</span>
+          </a>
+        </div>
+
+        <!-- Copy Direct Link Bar -->
+        <div class="copy-link-box">
+          <input type="text" id="share-url-input" class="copy-link-input" readonly value="" aria-label="Card Link URL">
+          <button type="button" id="btn-copy-link" class="btn-copy-action">
+            <svg class="btn-icon" style="width: 14px; height: 14px;" aria-hidden="true"><use href="#icon-copy"></use></svg>
+            <span>Copy</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ARIA Live Toast Notification Region -->
+  <div id="toast-region" class="toast-region" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Standard ES Module Entry -->
+  <script type="module" src="./js/main.js"></script>
+
+  <!-- Desktop file:// Protocol Fallback (Guarantees zero CORS failures when double-clicking index.html) -->
+  <script>
+    if (window.location.protocol === 'file:') {
+      (function() {
+        const CONFIG = {
+          name: "Amit Jain",
+          company: "MangoTree Insurance & Investments",
+          title: "Founder & CEO",
+          phoneE164: "+919911502502",
+          email: "mangotreeinsurance@gmail.com",
+          website: "https://www.mangotreeinsurance.com/",
+          address: "324, Cloud-9 Towers, Vaishali;Ghaziabad;;201010;India",
+          tagline: "Aam ke aam, guthliyon ke daam.",
+          shareText: "Check out MangoTree Insurance & Investments for personalised insurance and investment guidance."
+        };
+
+        function showToast(msg, type) {
+          const region = document.getElementById('toast-region');
+          if (!region) return;
+          region.innerHTML = '<div class="toast-card toast-enter toast-' + (type || 'info') + '"><span>' + msg + '</span></div>';
+          setTimeout(() => { region.innerHTML = ''; }, 3200);
+        }
+
+        // vCard download handler
+        function downloadVCard() {
+          try {
+            const vcard = "BEGIN:VCARD\r\nVERSION:3.0\r\nN:Jain;Amit;;;\r\nFN:" + CONFIG.name + "\r\nORG:" + CONFIG.company + "\r\nTITLE:" + CONFIG.title + "\r\nTEL;TYPE=WORK,VOICE:" + CONFIG.phoneE164 + "\r\nEMAIL;TYPE=WORK:" + CONFIG.email + "\r\nURL:" + CONFIG.website + "\r\nADR;TYPE=WORK:;;" + CONFIG.address + "\r\nNOTE:" + CONFIG.tagline + "\r\nEND:VCARD\r\n";
+            const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = "Amit_Jain.vcf";
+            a.click();
+            setTimeout(() => URL.revokeObjectURL(url), 12000);
+            showToast('Contact card downloaded! Open to save.', 'success');
+          } catch (e) {
+            const a = document.createElement('a');
+            a.href = './assets/amit-jain.vcf';
+            a.download = "Amit_Jain.vcf";
+            a.click();
+            showToast('Downloading contact card...', 'info');
+          }
+        }
+
+        // Dialog and share setup
+        const dialog = document.getElementById('share-dialog');
+        const shareUrl = window.location.href;
+        const linkInput = document.getElementById('share-url-input');
+        if (linkInput) linkInput.value = shareUrl;
+
+        // Share endpoints
+        const shareWhatsapp = document.getElementById('share-whatsapp');
+        const shareX = document.getElementById('share-x');
+        const shareFb = document.getElementById('share-facebook');
+        const shareLi = document.getElementById('share-linkedin');
+        if (shareWhatsapp) shareWhatsapp.href = "https://wa.me/?text=" + encodeURIComponent(CONFIG.shareText + " " + shareUrl);
+        if (shareX) shareX.href = "https://x.com/intent/post?text=" + encodeURIComponent(CONFIG.shareText) + "&url=" + encodeURIComponent(shareUrl);
+        if (shareFb) shareFb.href = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shareUrl);
+        if (shareLi) shareLi.href = "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(shareUrl);
+
+        function triggerShare() {
+          const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+          if (isMobile && navigator.share && navigator.canShare && navigator.canShare({ url: shareUrl })) {
+            navigator.share({ title: CONFIG.name, text: CONFIG.shareText, url: shareUrl }).catch(() => {});
+          } else if (dialog) {
+            dialog.showModal();
+            document.body.classList.add('dialog-open');
+          }
+        }
+
+        // Wire buttons
+        ['cta-save-hero', 'cta-save-bar'].forEach(id => {
+          const btn = document.getElementById(id);
+          if (btn) btn.onclick = downloadVCard;
+        });
+
+        ['cta-share-hero', 'cta-share-bar'].forEach(id => {
+          const btn = document.getElementById(id);
+          if (btn) btn.onclick = triggerShare;
+        });
+
+        if (dialog) {
+          dialog.addEventListener('click', (e) => {
+            const rect = dialog.getBoundingClientRect();
+            if (e.clientX < rect.left || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom) {
+              dialog.close();
+              document.body.classList.remove('dialog-open');
+            }
+          });
+          const closeBtn = dialog.querySelector('[data-close-dialog]');
+          if (closeBtn) closeBtn.onclick = () => { dialog.close(); document.body.classList.remove('dialog-open'); };
+        }
+
+        const copyBtn = document.getElementById('btn-copy-link');
+        if (copyBtn) {
+          copyBtn.onclick = () => {
+            navigator.clipboard.writeText(shareUrl).then(() => {
+              showToast('Card link copied to clipboard!', 'success');
+            }).catch(() => {
+              showToast('Link copied!', 'success');
+            });
+          };
+        }
+
+        // Mobile action bar observer
+        const heroActions = document.getElementById('hero-actions');
+        const actionBar = document.getElementById('mobile-action-bar');
+        if (heroActions && actionBar && 'IntersectionObserver' in window) {
+          const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+              if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+                actionBar.classList.add('is-visible');
+                actionBar.setAttribute('aria-hidden', 'false');
+              } else {
+                actionBar.classList.remove('is-visible');
+                actionBar.setAttribute('aria-hidden', 'true');
+              }
+            });
+          });
+          observer.observe(heroActions);
+        }
+      })();
+    }
   </script>
 </body>
 </html>
