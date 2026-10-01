@@ -209,13 +209,15 @@
     /* Static states: visibility controlled via class */
     transform: translateY(110%);
     opacity: 0;
+    visibility: hidden;
     pointer-events: none;
-    transition: transform var(--dur-2) var(--ease-out), opacity var(--dur-2) var(--ease-out);
+    transition: transform var(--dur-2) var(--ease-out), opacity var(--dur-2) var(--ease-out), visibility var(--dur-2);
   }
 
   .mobile-action-bar.is-visible {
     transform: translateY(0);
     opacity: 1;
+    visibility: visible;
     pointer-events: auto;
   }
 

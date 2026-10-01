@@ -1,5 +1,5 @@
 export const CONFIG = Object.freeze({
-  canonicalUrl: "",   // set to the final card URL, e.g. "https://card.mangotreeinsurance.com/"
+  canonicalUrl: "https://sarthakjain359.github.io/mangotree_card/",   // set to the final card URL, e.g. "https://card.mangotreeinsurance.com/"
   profile: {
     name: "Amit Jain",
     title: "Founder & CEO",

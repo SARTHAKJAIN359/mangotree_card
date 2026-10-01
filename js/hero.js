@@ -52,9 +52,11 @@ function initMobileActionBar() {
       if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
         actionBar.classList.add('is-visible');
         actionBar.setAttribute('aria-hidden', 'false');
+        actionBar.removeAttribute('inert');
       } else {
         actionBar.classList.remove('is-visible');
         actionBar.setAttribute('aria-hidden', 'true');
+        actionBar.setAttribute('inert', '');
       }
     });
   }, {
