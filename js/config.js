@@ -46,5 +46,7 @@ export const CONFIG = Object.freeze({
   ],
 });
 
-export const getShareUrl = () =>
-  CONFIG.canonicalUrl || (location.origin + location.pathname);
+export const getShareUrl = () => {
+  const base = CONFIG.canonicalUrl || (location.origin + location.pathname);
+  return base.includes('?') ? base : `${base}?v=2`;
+};
