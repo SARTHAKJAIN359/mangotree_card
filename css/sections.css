@@ -61,44 +61,69 @@
   }
 
   /* -------------------------------------------------------------
-     2. SERVICES BENTO GRID
+     2. SERVICES INFINITE AUTO-SCROLL RAIL (Mobile-first & Dynamic)
      ------------------------------------------------------------- */
-  .services-bento {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--s-3);
+  .services-section {
+    overflow: hidden;
   }
 
-  @media (min-width: 768px) {
-    .services-bento {
-      grid-template-columns: repeat(4, 1fr);
-    }
+  .services-marquee-wrap {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: var(--s-2) 0;
+    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  }
+
+  .services-marquee-track {
+    display: flex;
+    gap: 0;
+    align-items: flex-start;
+    width: max-content;
+    will-change: transform;
+    animation: services-marquee 32s linear infinite;
+  }
+
+  .services-marquee-track:hover,
+  .services-marquee-track:focus-within,
+  .services-marquee-track:has(.service-details[open]),
+  .services-marquee-track.has-open-card,
+  .services-marquee-track.is-paused {
+    animation-play-state: paused;
+  }
+
+  .services-group {
+    display: flex;
+    gap: var(--s-3);
+    align-items: flex-start;
+    padding-right: var(--s-3);
   }
 
   .service-tile {
-    background-color: var(--paper-card);
+    flex: 0 0 clamp(210px, 60vw, 265px);
+    width: clamp(210px, 60vw, 265px);
+    align-self: flex-start;
+    height: auto;
+    background: linear-gradient(145deg, #FFFFFF 0%, var(--paper-2) 100%);
     border: 1px solid var(--line);
+    border-left: 3.5px solid var(--leaf-700);
     border-radius: var(--r-md);
-    padding: var(--s-3);
+    padding: var(--s-4);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: var(--s-2);
     box-shadow: var(--sh-1);
-    transition: transform var(--dur-1) var(--ease-out), border-color var(--dur-1) var(--ease-out);
+    box-sizing: border-box;
+    transition: transform var(--dur-1) var(--ease-out), border-color var(--dur-1) var(--ease-out), box-shadow var(--dur-1) var(--ease-out);
   }
 
   .service-tile:hover {
     border-color: rgba(18, 35, 26, 0.25);
+    border-left-color: var(--mango-500);
     transform: translateY(-2px);
-  }
-
-  /* Hero Featured Services (Life & Health take full width on mobile or 2-cols on desktop) */
-  .service-tile-featured {
-    grid-column: span 2;
-    background: linear-gradient(145deg, #FFFFFF 0%, var(--paper-2) 100%);
-    border-left: 3.5px solid var(--leaf-700);
-    padding: var(--s-4);
+    box-shadow: var(--sh-2);
   }
 
   .service-top {
@@ -120,6 +145,11 @@
     justify-content: center;
     flex-shrink: 0;
     box-shadow: 0 2px 6px rgba(15, 61, 42, 0.2);
+    transition: background-color var(--dur-1) var(--ease-out);
+  }
+
+  .service-tile:hover .service-icon-well {
+    background-color: var(--leaf-800);
   }
 
   .service-icon-well .btn-icon {
@@ -144,14 +174,48 @@
 
   .service-name {
     font-family: var(--font-display);
-    font-size: 1.05rem;
+    font-size: clamp(1.05rem, 0.95rem + 0.4vw, 1.22rem);
     font-weight: 700;
     color: var(--ink);
     margin: var(--s-1) 0 0;
+    line-height: 1.25;
+    word-break: break-word;
+    min-height: 48px;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  /* Interactive Marquee Controls */
+  .services-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--s-1);
+    font-size: var(--fs-caption);
+    color: var(--ink-muted);
+  }
+
+  .btn-pause-marquee {
+    background: none;
+    border: none;
+    font-family: var(--font-ui);
+    font-size: var(--fs-caption);
+    font-weight: 600;
+    color: var(--leaf-800);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 6px;
+    border-radius: var(--r-sm);
+  }
+
+  .btn-pause-marquee:hover {
+    background-color: rgba(18, 35, 26, 0.06);
   }
 
   .service-tile-featured .service-name {
-    font-size: 1.2rem;
+    font-size: clamp(1.05rem, 0.95rem + 0.4vw, 1.22rem);
   }
 
   /* Expandable Disclosure for Service Details */
@@ -162,15 +226,47 @@
     padding-top: var(--s-2);
   }
 
+  /* Synchronized Pulse Animation for View Details */
+  @keyframes details-pulse {
+    0%, 100% {
+      opacity: 0.85;
+      color: var(--leaf-800);
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      color: var(--mango-text);
+      transform: scale(1.04);
+      text-shadow: 0 0 6px rgba(242, 154, 31, 0.35);
+    }
+  }
+
   .service-details summary {
     font-size: var(--fs-caption);
-    font-weight: 600;
+    font-weight: 700;
     color: var(--leaf-800);
     cursor: pointer;
     list-style: none;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 2px 0;
+    user-select: none;
+  }
+
+  .service-details summary span {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transform-origin: left center;
+    animation: details-pulse 2s ease-in-out infinite;
+  }
+
+  .service-details[open] summary span {
+    animation: none;
+    color: var(--leaf-800);
+    transform: none;
+    text-shadow: none;
   }
 
   .service-details summary::-webkit-details-marker {
@@ -180,6 +276,7 @@
   .service-details summary .btn-icon {
     width: 16px;
     height: 16px;
+    color: var(--leaf-700);
     transition: transform var(--dur-1) var(--ease-out);
   }
 
@@ -237,8 +334,10 @@
   }
 
   .partner-logo {
+    width: auto;
+    height: 48px;
     max-width: 100%;
-    max-height: 52px;
+    aspect-ratio: 512 / 264;
     object-fit: contain;
   }
 

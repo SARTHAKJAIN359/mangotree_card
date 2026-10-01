@@ -12,12 +12,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="./assets/img/logo-mangotree.png">
+
   <!-- Modern Cascading Layer Stylesheets -->
-  <link rel="stylesheet" href="./css/tokens.css">
-  <link rel="stylesheet" href="./css/base.css">
-  <link rel="stylesheet" href="./css/layout.css">
-  <link rel="stylesheet" href="./css/components.css">
-  <link rel="stylesheet" href="./css/sections.css">
+  <link rel="stylesheet" href="./css/tokens.css?v=3">
+  <link rel="stylesheet" href="./css/base.css?v=3">
+  <link rel="stylesheet" href="./css/layout.css?v=3">
+  <link rel="stylesheet" href="./css/components.css?v=3">
+  <link rel="stylesheet" href="./css/sections.css?v=3">
+  <link rel="stylesheet" href="./css/motion.css?v=3">
 </head>
 <body>
 
@@ -99,7 +103,7 @@
 
   <!-- Mobile-first App Shell -->
   <main class="app-shell">
-    
+
     <!-- 1. Hero Section -->
     <section class="hero-section" aria-label="Amit Jain profile header">
       
@@ -109,6 +113,11 @@
           <a href="./" class="brand-logo-link" aria-label="MangoTree Insurance & Investments Home">
             <img id="brand-logo" class="brand-logo" src="./assets/img/logo-mangotree.png" alt="MangoTree Insurance & Investments Logo">
           </a>
+          <!-- Tagline: Hindi in Latin Script beside Logo in the Green Canopy Header -->
+          <p id="hero-tagline" class="hero-tagline" lang="hi-Latn">
+            <span class="tagline-primary">“Aam ke aam,</span>
+            <span class="tagline-accent">guthliyon ke daam.”</span>
+          </p>
         </header>
       </div>
 
@@ -127,12 +136,6 @@
         <h1 id="hero-name" class="hero-name">Amit Jain</h1>
         <p id="hero-role" class="hero-role">Founder & CEO</p>
         <p id="hero-company" class="hero-company">MangoTree Insurance & Investments</p>
-        
-        <!-- Tagline: Hindi in Latin Script with WCAG AA Accent -->
-        <p id="hero-tagline" class="hero-tagline" lang="hi-Latn">
-          <span class="tagline-primary">“Aam ke aam,</span>
-          <span class="tagline-accent">guthliyon ke daam.”</span>
-        </p>
       </div>
 
       <!-- Action Cluster: WhatsApp Primary + Call, Save, Share Secondary -->
@@ -170,7 +173,7 @@
     </section>
 
     <!-- 2. About Section -->
-    <section class="section about-section" aria-labelledby="about-heading">
+    <section id="about-section" class="section about-section reveal-on-scroll" aria-labelledby="about-heading">
       <div class="section-header">
         <p class="section-eyebrow">Personal Advisory</p>
         <h2 id="about-heading" class="section-title">About Amit Jain</h2>
@@ -182,180 +185,362 @@
       </div>
     </section>
 
-    <!-- 3. Services Bento Grid Section -->
-    <section class="section services-section" aria-labelledby="services-heading">
+    <!-- 3. Services Infinite Auto-Scrolling Rail Section -->
+    <section id="services-section" class="section services-section reveal-on-scroll" aria-labelledby="services-heading">
       <div class="section-header">
         <p class="section-eyebrow">Portfolio</p>
-        <h2 id="services-heading" class="section-title">Services We Provide</h2>
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px;">
+          <h2 id="services-heading" class="section-title">Services We Provide</h2>
+          <button type="button" id="btn-toggle-marquee" class="btn-pause-marquee" aria-label="Pause or resume auto scroll">
+            <span id="marquee-status-text">⏸ Pause</span>
+          </button>
+        </div>
       </div>
 
-      <div class="services-bento">
-        <!-- 1. Life Insurance (Featured Large Tile) -->
-        <article class="service-tile service-tile-featured">
-          <div class="service-top">
-            <div class="service-icon-well">
-              <svg class="btn-icon" aria-hidden="true"><use href="#icon-life"></use></svg>
-            </div>
-            <span class="service-badge badge-protect">Protect</span>
-          </div>
-          <div>
-            <h3 class="service-name">Life Insurance</h3>
-            <details class="service-details">
-              <summary>
-                <span>View Details</span>
-                <svg class="btn-icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
-              </summary>
-              <p class="service-blurb">Comprehensive financial security for your family's future through term and whole life plans.</p>
-              <a class="service-inquire-link" href="https://wa.me/919911502502?text=Hi%20Amit%2C%20I%20would%20like%20to%20know%20more%20about%20Life%20Insurance." target="_blank" rel="noopener noreferrer">Inquire on WhatsApp &rarr;</a>
-            </details>
-          </div>
-        </article>
+      <!-- Marquee Carousel Track with Seamless Dual Loop -->
+      <div class="services-marquee-wrap" id="services-marquee-wrap" role="region" aria-label="Auto-scrolling services carousel">
+        <div class="services-marquee-track" id="services-track">
+          
+          <!-- Primary Track Group -->
+          <div class="services-group" aria-hidden="false">
+            <!-- 1. Life Insurance -->
+            <article class="service-tile service-tile-featured">
+              <div class="service-top">
+                <div class="service-icon-well">
+                  <svg class="btn-icon" aria-hidden="true"><use href="#icon-life"></use></svg>
+                </div>
+                <span class="service-badge badge-protect">Protect</span>
+              </div>
+              <div>
+                <h3 class="service-name">Life Insurance</h3>
+                <details class="service-details" name="service-item">
+                  <summary>
+                    <span>View Details</span>
+                    <svg class="btn-icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+                  </summary>
+                  <p class="service-blurb">Comprehensive financial security for your family's future through term and whole life plans.</p>
+                  <a class="service-inquire-link" href="https://wa.me/919911502502?text=Hi%20Amit%2C%20I%20would%20like%20to%20know%20more%20about%20Life%20Insurance." target="_blank" rel="noopener noreferrer">Inquire on WhatsApp &rarr;</a>
+                </details>
+              </div>
+            </article>
 
-        <!-- 2. Health Insurance (Featured Large Tile) -->
-        <article class="service-tile service-tile-featured">
-          <div class="service-top">
-            <div class="service-icon-well">
-              <svg class="btn-icon" aria-hidden="true"><use href="#icon-health"></use></svg>
-            </div>
-            <span class="service-badge badge-protect">Protect</span>
-          </div>
-          <div>
-            <h3 class="service-name">Health Insurance</h3>
-            <details class="service-details">
-              <summary>
-                <span>View Details</span>
-                <svg class="btn-icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
-              </summary>
-              <p class="service-blurb">Cashless medical and hospitalization coverage ensuring quality treatment without financial strain.</p>
-              <a class="service-inquire-link" href="https://wa.me/919911502502?text=Hi%20Amit%2C%20I%20would%20like%20to%20know%20more%20about%20Health%20Insurance." target="_blank" rel="noopener noreferrer">Inquire on WhatsApp &rarr;</a>
-            </details>
-          </div>
-        </article>
+            <!-- 2. Health Insurance -->
+            <article class="service-tile service-tile-featured">
+              <div class="service-top">
+                <div class="service-icon-well">
+                  <svg class="btn-icon" aria-hidden="true"><use href="#icon-health"></use></svg>
+                </div>
+                <span class="service-badge badge-protect">Protect</span>
+              </div>
+              <div>
+                <h3 class="service-name">Health Insurance</h3>
+                <details class="service-details" name="service-item">
+                  <summary>
+                    <span>View Details</span>
+                    <svg class="btn-icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+                  </summary>
+                  <p class="service-blurb">Cashless medical and hospitalization coverage ensuring quality treatment without financial strain.</p>
+                  <a class="service-inquire-link" href="https://wa.me/919911502502?text=Hi%20Amit%2C%20I%20would%20like%20to%20know%20more%20about%20Health%20Insurance." target="_blank" rel="noopener noreferrer">Inquire on WhatsApp &rarr;</a>
+                </details>
+              </div>
+            </article>
 
-        <!-- 3. Children Future -->
-        <article class="service-tile">
-          <div class="service-top">
-            <div class="service-icon-well">
-              <svg class="btn-icon" aria-hidden="true"><use href="#icon-child"></use></svg>
-            </div>
-            <span class="service-badge badge-plan">Plan</span>
-          </div>
-          <div>
-            <h3 class="service-name">Children Future</h3>
-            <details class="service-details">
-              <summary>
-                <span>Details</span>
-                <svg class="btn-icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
-              </summary>
-              <p class="service-blurb">Secure funding for your child's higher education and career milestones.</p>
-            </details>
-          </div>
-        </article>
+            <!-- 3. Children Future -->
+            <article class="service-tile service-tile-featured">
+              <div class="service-top">
+                <div class="service-icon-well">
+                  <svg class="btn-icon" aria-hidden="true"><use href="#icon-child"></use></svg>
+                </div>
+                <span class="service-badge badge-plan">Plan</span>
+              </div>
+              <div>
+                <h3 class="service-name">Children Future</h3>
+                <details class="service-details" name="service-item">
+                  <summary>
+                    <span>View Details</span>
+                    <svg class="btn-icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+                  </summary>
+                  <p class="service-blurb">Secure funding for your child's higher education and career milestones.</p>
+                  <a class="service-inquire-link" href="https://wa.me/919911502502?text=Hi%20Amit%2C%20I%20would%20like%20to%20know%20more%20about%20Children%20Future%20Planning." target="_blank" rel="noopener noreferrer">Inquire on WhatsApp &rarr;</a>
+                </details>
+              </div>
+            </article>
 
-        <!-- 4. Accident Insurance -->
-        <article class="service-tile">
-          <div class="service-top">
-            <div class="service-icon-well">
-              <svg class="btn-icon" aria-hidden="true"><use href="#icon-accident"></use></svg>
-            </div>
-            <span class="service-badge badge-protect">Protect</span>
-          </div>
-          <div>
-            <h3 class="service-name">Accident Insurance</h3>
-            <details class="service-details">
-              <summary>
-                <span>Details</span>
-                <svg class="btn-icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
-              </summary>
-              <p class="service-blurb">Comprehensive coverage and income protection against unexpected accidents.</p>
-            </details>
-          </div>
-        </article>
+            <!-- 4. Accident Insurance -->
+            <article class="service-tile service-tile-featured">
+              <div class="service-top">
+                <div class="service-icon-well">
+                  <svg class="btn-icon" aria-hidden="true"><use href="#icon-accident"></use></svg>
+                </div>
+                <span class="service-badge badge-protect">Protect</span>
+              </div>
+              <div>
+                <h3 class="service-name">Accident Insurance</h3>
+                <details class="service-details" name="service-item">
+                  <summary>
+                    <span>View Details</span>
+                    <svg class="btn-icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+                  </summary>
+                  <p class="service-blurb">Comprehensive coverage and income protection against unexpected accidents.</p>
+                  <a class="service-inquire-link" href="https://wa.me/919911502502?text=Hi%20Amit%2C%20I%20would%20like%20to%20know%20more%20about%20Accident%20Insurance." target="_blank" rel="noopener noreferrer">Inquire on WhatsApp &rarr;</a>
+                </details>
+              </div>
+            </article>
 
-        <!-- 5. Retirement Insurance -->
-        <article class="service-tile">
-          <div class="service-top">
-            <div class="service-icon-well">
-              <svg class="btn-icon" aria-hidden="true"><use href="#icon-retire"></use></svg>
-            </div>
-            <span class="service-badge badge-plan">Plan</span>
-          </div>
-          <div>
-            <h3 class="service-name">Retirement Insurance</h3>
-            <details class="service-details">
-              <summary>
-                <span>Details</span>
-                <svg class="btn-icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
-              </summary>
-              <p class="service-blurb">Guaranteed pension and annuity solutions for an independent lifestyle.</p>
-            </details>
-          </div>
-        </article>
+            <!-- 5. Retirement Insurance -->
+            <article class="service-tile service-tile-featured">
+              <div class="service-top">
+                <div class="service-icon-well">
+                  <svg class="btn-icon" aria-hidden="true"><use href="#icon-retire"></use></svg>
+                </div>
+                <span class="service-badge badge-plan">Plan</span>
+              </div>
+              <div>
+                <h3 class="service-name">Retirement Insurance</h3>
+                <details class="service-details" name="service-item">
+                  <summary>
+                    <span>View Details</span>
+                    <svg class="btn-icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+                  </summary>
+                  <p class="service-blurb">Guaranteed pension and annuity solutions for an independent lifestyle.</p>
+                  <a class="service-inquire-link" href="https://wa.me/919911502502?text=Hi%20Amit%2C%20I%20would%20like%20to%20know%20more%20about%20Retirement%20Planning." target="_blank" rel="noopener noreferrer">Inquire on WhatsApp &rarr;</a>
+                </details>
+              </div>
+            </article>
 
-        <!-- 6. Residential Insurance -->
-        <article class="service-tile">
-          <div class="service-top">
-            <div class="service-icon-well">
-              <svg class="btn-icon" aria-hidden="true"><use href="#icon-residence"></use></svg>
-            </div>
-            <span class="service-badge badge-protect">Protect</span>
-          </div>
-          <div>
-            <h3 class="service-name">Residential Insurance</h3>
-            <details class="service-details">
-              <summary>
-                <span>Details</span>
-                <svg class="btn-icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
-              </summary>
-              <p class="service-blurb">Protection against fire, natural hazards, and theft for home and contents.</p>
-            </details>
-          </div>
-        </article>
+            <!-- 6. Residential Insurance -->
+            <article class="service-tile service-tile-featured">
+              <div class="service-top">
+                <div class="service-icon-well">
+                  <svg class="btn-icon" aria-hidden="true"><use href="#icon-residence"></use></svg>
+                </div>
+                <span class="service-badge badge-protect">Protect</span>
+              </div>
+              <div>
+                <h3 class="service-name">Residential Insurance</h3>
+                <details class="service-details" name="service-item">
+                  <summary>
+                    <span>View Details</span>
+                    <svg class="btn-icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+                  </summary>
+                  <p class="service-blurb">Protection against fire, natural hazards, and theft for home and contents.</p>
+                  <a class="service-inquire-link" href="https://wa.me/919911502502?text=Hi%20Amit%2C%20I%20would%20like%20to%20know%20more%20about%20Residential%20Insurance." target="_blank" rel="noopener noreferrer">Inquire on WhatsApp &rarr;</a>
+                </details>
+              </div>
+            </article>
 
-        <!-- 7. Mutual Funds -->
-        <article class="service-tile">
-          <div class="service-top">
-            <div class="service-icon-well">
-              <svg class="btn-icon" aria-hidden="true"><use href="#icon-mutual"></use></svg>
-            </div>
-            <span class="service-badge badge-grow">Grow</span>
-          </div>
-          <div>
-            <h3 class="service-name">Mutual Funds</h3>
-            <details class="service-details">
-              <summary>
-                <span>Details</span>
-                <svg class="btn-icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
-              </summary>
-              <p class="service-blurb">Disciplined long-term wealth creation through tailored Systematic Investment Plans (SIPs).</p>
-            </details>
-          </div>
-        </article>
+            <!-- 7. Mutual Funds -->
+            <article class="service-tile service-tile-featured">
+              <div class="service-top">
+                <div class="service-icon-well">
+                  <svg class="btn-icon" aria-hidden="true"><use href="#icon-mutual"></use></svg>
+                </div>
+                <span class="service-badge badge-grow">Grow</span>
+              </div>
+              <div>
+                <h3 class="service-name">Mutual Funds</h3>
+                <details class="service-details" name="service-item">
+                  <summary>
+                    <span>View Details</span>
+                    <svg class="btn-icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+                  </summary>
+                  <p class="service-blurb">Disciplined long-term wealth creation through tailored Systematic Investment Plans (SIPs).</p>
+                  <a class="service-inquire-link" href="https://wa.me/919911502502?text=Hi%20Amit%2C%20I%20would%20like%20to%20know%20more%20about%20Mutual%20Funds." target="_blank" rel="noopener noreferrer">Inquire on WhatsApp &rarr;</a>
+                </details>
+              </div>
+            </article>
 
-        <!-- 8. Travel Insurance -->
-        <article class="service-tile">
-          <div class="service-top">
-            <div class="service-icon-well">
-              <svg class="btn-icon" aria-hidden="true"><use href="#icon-travel"></use></svg>
-            </div>
-            <span class="service-badge badge-protect">Protect</span>
+            <!-- 8. Travel Insurance -->
+            <article class="service-tile service-tile-featured">
+              <div class="service-top">
+                <div class="service-icon-well">
+                  <svg class="btn-icon" aria-hidden="true"><use href="#icon-travel"></use></svg>
+                </div>
+                <span class="service-badge badge-protect">Protect</span>
+              </div>
+              <div>
+                <h3 class="service-name">Travel Insurance</h3>
+                <details class="service-details" name="service-item">
+                  <summary>
+                    <span>View Details</span>
+                    <svg class="btn-icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+                  </summary>
+                  <p class="service-blurb">International and domestic trip cover for medical emergencies and cancellations.</p>
+                  <a class="service-inquire-link" href="https://wa.me/919911502502?text=Hi%20Amit%2C%20I%20would%20like%20to%20know%20more%20about%20Travel%20Insurance." target="_blank" rel="noopener noreferrer">Inquire on WhatsApp &rarr;</a>
+                </details>
+              </div>
+            </article>
           </div>
-          <div>
-            <h3 class="service-name">Travel Insurance</h3>
-            <details class="service-details">
-              <summary>
-                <span>Details</span>
-                <svg class="btn-icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
-              </summary>
-              <p class="service-blurb">International and domestic trip cover for medical emergencies and cancellations.</p>
-            </details>
+
+          <!-- Duplicate Group for Seamless Gapless Loop -->
+          <div class="services-group" aria-hidden="true">
+            <article class="service-tile service-tile-featured">
+              <div class="service-top">
+                <div class="service-icon-well">
+                  <svg class="btn-icon" aria-hidden="true"><use href="#icon-life"></use></svg>
+                </div>
+                <span class="service-badge badge-protect">Protect</span>
+              </div>
+              <div>
+                <h3 class="service-name">Life Insurance</h3>
+                <details class="service-details" name="service-item">
+                  <summary>
+                    <span>View Details</span>
+                    <svg class="btn-icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+                  </summary>
+                  <p class="service-blurb">Comprehensive financial security for your family's future through term and whole life plans.</p>
+                  <a class="service-inquire-link" href="https://wa.me/919911502502?text=Hi%20Amit%2C%20I%20would%20like%20to%20know%20more%20about%20Life%20Insurance." target="_blank" rel="noopener noreferrer">Inquire on WhatsApp &rarr;</a>
+                </details>
+              </div>
+            </article>
+
+            <article class="service-tile service-tile-featured">
+              <div class="service-top">
+                <div class="service-icon-well">
+                  <svg class="btn-icon" aria-hidden="true"><use href="#icon-health"></use></svg>
+                </div>
+                <span class="service-badge badge-protect">Protect</span>
+              </div>
+              <div>
+                <h3 class="service-name">Health Insurance</h3>
+                <details class="service-details" name="service-item">
+                  <summary>
+                    <span>View Details</span>
+                    <svg class="btn-icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+                  </summary>
+                  <p class="service-blurb">Cashless medical and hospitalization coverage ensuring quality treatment without financial strain.</p>
+                  <a class="service-inquire-link" href="https://wa.me/919911502502?text=Hi%20Amit%2C%20I%20would%20like%20to%20know%20more%20about%20Health%20Insurance." target="_blank" rel="noopener noreferrer">Inquire on WhatsApp &rarr;</a>
+                </details>
+              </div>
+            </article>
+
+            <article class="service-tile service-tile-featured">
+              <div class="service-top">
+                <div class="service-icon-well">
+                  <svg class="btn-icon" aria-hidden="true"><use href="#icon-child"></use></svg>
+                </div>
+                <span class="service-badge badge-plan">Plan</span>
+              </div>
+              <div>
+                <h3 class="service-name">Children Future</h3>
+                <details class="service-details" name="service-item">
+                  <summary>
+                    <span>View Details</span>
+                    <svg class="btn-icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+                  </summary>
+                  <p class="service-blurb">Secure funding for your child's higher education and career milestones.</p>
+                  <a class="service-inquire-link" href="https://wa.me/919911502502?text=Hi%20Amit%2C%20I%20would%20like%20to%20know%20more%20about%20Children%20Future%20Planning." target="_blank" rel="noopener noreferrer">Inquire on WhatsApp &rarr;</a>
+                </details>
+              </div>
+            </article>
+
+            <article class="service-tile service-tile-featured">
+              <div class="service-top">
+                <div class="service-icon-well">
+                  <svg class="btn-icon" aria-hidden="true"><use href="#icon-accident"></use></svg>
+                </div>
+                <span class="service-badge badge-protect">Protect</span>
+              </div>
+              <div>
+                <h3 class="service-name">Accident Insurance</h3>
+                <details class="service-details" name="service-item">
+                  <summary>
+                    <span>View Details</span>
+                    <svg class="btn-icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+                  </summary>
+                  <p class="service-blurb">Comprehensive coverage and income protection against unexpected accidents.</p>
+                  <a class="service-inquire-link" href="https://wa.me/919911502502?text=Hi%20Amit%2C%20I%20would%20like%20to%20know%20more%20about%20Accident%20Insurance." target="_blank" rel="noopener noreferrer">Inquire on WhatsApp &rarr;</a>
+                </details>
+              </div>
+            </article>
+
+            <article class="service-tile service-tile-featured">
+              <div class="service-top">
+                <div class="service-icon-well">
+                  <svg class="btn-icon" aria-hidden="true"><use href="#icon-retire"></use></svg>
+                </div>
+                <span class="service-badge badge-plan">Plan</span>
+              </div>
+              <div>
+                <h3 class="service-name">Retirement Insurance</h3>
+                <details class="service-details" name="service-item">
+                  <summary>
+                    <span>View Details</span>
+                    <svg class="btn-icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+                  </summary>
+                  <p class="service-blurb">Guaranteed pension and annuity solutions for an independent lifestyle.</p>
+                  <a class="service-inquire-link" href="https://wa.me/919911502502?text=Hi%20Amit%2C%20I%20would%20like%20to%20know%20more%20about%20Retirement%20Planning." target="_blank" rel="noopener noreferrer">Inquire on WhatsApp &rarr;</a>
+                </details>
+              </div>
+            </article>
+
+            <article class="service-tile service-tile-featured">
+              <div class="service-top">
+                <div class="service-icon-well">
+                  <svg class="btn-icon" aria-hidden="true"><use href="#icon-residence"></use></svg>
+                </div>
+                <span class="service-badge badge-protect">Protect</span>
+              </div>
+              <div>
+                <h3 class="service-name">Residential Insurance</h3>
+                <details class="service-details" name="service-item">
+                  <summary>
+                    <span>View Details</span>
+                    <svg class="btn-icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+                  </summary>
+                  <p class="service-blurb">Protection against fire, natural hazards, and theft for home and contents.</p>
+                  <a class="service-inquire-link" href="https://wa.me/919911502502?text=Hi%20Amit%2C%20I%20would%20like%20to%20know%20more%20about%20Residential%20Insurance." target="_blank" rel="noopener noreferrer">Inquire on WhatsApp &rarr;</a>
+                </details>
+              </div>
+            </article>
+
+            <article class="service-tile service-tile-featured">
+              <div class="service-top">
+                <div class="service-icon-well">
+                  <svg class="btn-icon" aria-hidden="true"><use href="#icon-mutual"></use></svg>
+                </div>
+                <span class="service-badge badge-grow">Grow</span>
+              </div>
+              <div>
+                <h3 class="service-name">Mutual Funds</h3>
+                <details class="service-details" name="service-item">
+                  <summary>
+                    <span>View Details</span>
+                    <svg class="btn-icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+                  </summary>
+                  <p class="service-blurb">Disciplined long-term wealth creation through tailored Systematic Investment Plans (SIPs).</p>
+                  <a class="service-inquire-link" href="https://wa.me/919911502502?text=Hi%20Amit%2C%20I%20would%20like%20to%20know%20more%20about%20Mutual%20Funds." target="_blank" rel="noopener noreferrer">Inquire on WhatsApp &rarr;</a>
+                </details>
+              </div>
+            </article>
+
+            <article class="service-tile service-tile-featured">
+              <div class="service-top">
+                <div class="service-icon-well">
+                  <svg class="btn-icon" aria-hidden="true"><use href="#icon-travel"></use></svg>
+                </div>
+                <span class="service-badge badge-protect">Protect</span>
+              </div>
+              <div>
+                <h3 class="service-name">Travel Insurance</h3>
+                <details class="service-details" name="service-item">
+                  <summary>
+                    <span>View Details</span>
+                    <svg class="btn-icon" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
+                  </summary>
+                  <p class="service-blurb">International and domestic trip cover for medical emergencies and cancellations.</p>
+                  <a class="service-inquire-link" href="https://wa.me/919911502502?text=Hi%20Amit%2C%20I%20would%20like%20to%20know%20more%20about%20Travel%20Insurance." target="_blank" rel="noopener noreferrer">Inquire on WhatsApp &rarr;</a>
+                </details>
+              </div>
+            </article>
           </div>
-        </article>
+
+        </div>
       </div>
     </section>
 
     <!-- 4. Insurance Ecosystem Rail -->
-    <section class="section partners-section" aria-labelledby="partners-heading">
+    <section id="partners-section" class="section partners-section reveal-on-scroll" aria-labelledby="partners-heading">
       <div class="section-header">
         <p class="section-eyebrow">Trusted Ecosystem</p>
         <h2 id="partners-heading" class="section-title">Insurance Brands We Work With</h2>
@@ -378,7 +563,7 @@
     </section>
 
     <!-- 5. Recognition & Credentials Section -->
-    <section class="section recognition-section" aria-labelledby="recognition-heading">
+    <section id="recognition-section" class="section recognition-section reveal-on-scroll" aria-labelledby="recognition-heading">
       <div class="section-header">
         <p class="section-eyebrow">Credentials</p>
         <h2 id="recognition-heading" class="section-title">Industry Recognition</h2>
@@ -396,7 +581,7 @@
     </section>
 
     <!-- 6. Connect & Social Profiles (Strict Separation from Share System) -->
-    <section class="section connect-section" aria-labelledby="connect-heading">
+    <section id="connect-section" class="section connect-section reveal-on-scroll" aria-labelledby="connect-heading">
       <div class="section-header">
         <p class="section-eyebrow">Connect</p>
         <h2 id="connect-heading" class="section-title">Follow MangoTree</h2>
@@ -432,7 +617,7 @@
               <svg class="btn-icon" style="width: 16px; height: 16px;" aria-hidden="true"><use href="#icon-chevron-down"></use></svg>
             </summary>
             <div class="qr-body">
-              <img class="qr-image" src="./assets/img/qr-mangotree.png" alt="MangoTree Digital Card QR Code" width="170" height="170" loading="lazy">
+              <img class="qr-image" src="./assets/img/qr-mangotree.png" alt="MangoTree Digital Card QR Code" width="240" height="240" loading="lazy">
               <p class="qr-caption">Scan with any smartphone camera to view and save this digital card.</p>
             </div>
           </details>
@@ -441,7 +626,7 @@
     </section>
 
     <!-- 7. Google Review Card -->
-    <section class="section review-section-wrap" aria-label="Customer review card">
+    <section id="review-section" class="section review-section-wrap reveal-on-scroll" aria-label="Customer review card">
       <div class="review-card">
         <div class="review-stars" aria-label="5 stars rating">
           <svg class="btn-icon" aria-hidden="true"><use href="#icon-star"></use></svg>
@@ -460,7 +645,7 @@
     </section>
 
     <!-- 8. Location & Hours -->
-    <section class="section location-section" aria-labelledby="location-heading">
+    <section id="location-section" class="section location-section reveal-on-scroll" aria-labelledby="location-heading">
       <div class="section-header">
         <p class="section-eyebrow">Office</p>
         <h2 id="location-heading" class="section-title">Location & Timings</h2>
@@ -491,7 +676,7 @@
     </section>
 
     <!-- 9. Disclaimer & Minimal Footer -->
-    <section class="section disclaimer-section" aria-label="Legal disclosure and disclaimer">
+    <section class="section disclaimer-section reveal-on-scroll" aria-label="Legal disclosure and disclaimer">
       <div class="disclaimer-card">
         <details class="disclaimer-details">
           <summary>
@@ -625,7 +810,7 @@
   <div id="toast-region" class="toast-region" role="status" aria-live="polite" aria-atomic="true"></div>
 
   <!-- Standard ES Module Entry -->
-  <script type="module" src="./js/main.js"></script>
+  <script type="module" src="./js/main.js?v=3"></script>
 
   <!-- Desktop file:// Protocol Fallback (Guarantees zero CORS failures when double-clicking index.html) -->
   <script>
@@ -746,6 +931,79 @@
               showToast('Link copied!', 'success');
             });
           };
+        }
+
+        // Marquee pause/play toggle button
+        const track = document.getElementById('services-track');
+        const toggleBtn = document.getElementById('btn-toggle-marquee');
+        const statusText = document.getElementById('marquee-status-text');
+        if (track && toggleBtn && statusText) {
+          toggleBtn.onclick = () => {
+            const isPaused = track.classList.toggle('is-paused');
+            statusText.textContent = isPaused ? '▶ Resume' : '⏸ Pause';
+          };
+        }
+
+        // Exclusive service cards accordion (only one open at a time) & click-outside dismissal
+        const allServiceDetails = document.querySelectorAll('.service-details');
+
+        function updateFallbackMarqueePause() {
+          if (!track) return;
+          const anyOpen = Array.from(allServiceDetails).some(d => d.open);
+          track.classList.toggle('has-open-card', anyOpen);
+        }
+
+        function closeAllFallbackServiceDetails() {
+          let closedAny = false;
+          allServiceDetails.forEach(d => {
+            if (d.open) {
+              d.open = false;
+              closedAny = true;
+            }
+          });
+          if (closedAny) updateFallbackMarqueePause();
+        }
+
+        allServiceDetails.forEach(details => {
+          details.addEventListener('toggle', () => {
+            if (details.open) {
+              allServiceDetails.forEach(other => {
+                if (other !== details && other.open) other.open = false;
+              });
+            }
+            updateFallbackMarqueePause();
+          });
+        });
+
+        // Close open card when clicking or tapping outside
+        document.addEventListener('click', (e) => {
+          if (e.target && typeof e.target.closest === 'function' && e.target.closest('.service-details')) return;
+          closeAllFallbackServiceDetails();
+        });
+
+        document.addEventListener('pointerdown', (e) => {
+          if (e.target && typeof e.target.closest === 'function' && e.target.closest('.service-tile')) return;
+          closeAllFallbackServiceDetails();
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            closeAllFallbackServiceDetails();
+          }
+        });
+
+        // Scroll reveals fallback
+        const sections = document.querySelectorAll('.reveal-on-scroll');
+        if (sections.length && 'IntersectionObserver' in window) {
+          const revealObs = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-revealed');
+                obs.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.1 });
+          sections.forEach(s => revealObs.observe(s));
         }
 
         // Mobile action bar observer

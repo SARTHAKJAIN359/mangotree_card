@@ -50,19 +50,22 @@
   .canopy-header {
     width: 100%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
+    gap: var(--s-2);
     margin-bottom: var(--s-3);
   }
 
   .brand-logo-link {
     display: inline-flex;
     align-items: center;
-    background-color: #FFFFFF;
-    padding: 6px 14px;
-    border-radius: var(--r-sm);
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.16);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    flex-shrink: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 8px;
+    overflow: hidden;
     transition: transform var(--dur-1) var(--ease-out);
   }
 
@@ -71,11 +74,12 @@
   }
 
   .brand-logo {
-    width: clamp(140px, 38vw, 195px);
-    height: auto;
-    max-height: 75px;
+    height: clamp(52px, 14vw, 68px);
+    width: auto;
+    max-width: clamp(140px, 42vw, 195px);
     object-fit: contain;
     display: block;
+    border-radius: 8px;
   }
 
   /* Portrait Arch Wrapper — Overlaps the green canopy boundary */
@@ -140,24 +144,34 @@
     margin: 0;
   }
 
-  /* Tagline */
+  /* Tagline beside Logo in Canopy Header */
+  .canopy-header .hero-tagline,
   .hero-tagline {
     font-family: var(--font-display);
-    font-size: clamp(1.05rem, 0.95rem + 0.6vw, 1.25rem);
+    font-size: clamp(0.82rem, 0.72rem + 0.5vw, 1.02rem);
     font-style: italic;
     font-weight: 500;
     line-height: 1.35;
-    color: var(--ink);
-    margin: var(--s-2) 0 var(--s-3);
+    color: #FFFFFF;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 1px;
+    align-items: flex-end;
+    text-align: right;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .tagline-primary {
+    color: #FFFFFF !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   }
 
   .tagline-accent {
-    color: var(--mango-text);
+    color: #F8B133 !important;
     font-weight: 600;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   }
 
   /* Action Cluster Container */
